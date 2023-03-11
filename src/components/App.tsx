@@ -1,11 +1,23 @@
-import { FC, useEffect } from "react";
-import { useAppDispatch } from "../redux/hooks";
-import { getTrackingData } from "../redux/trackingSlice/operation";
+import { FC, Suspense } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
 
 export const App: FC = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getTrackingData("20450676703183"));
-  }, []);
-  return <h1>Hello world</h1>;
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            Layout
+            <Suspense>
+              <Outlet />
+            </Suspense>
+          </>
+        }
+      >
+        <Route index element={<>Tracking</>} />
+        <Route path="/departures" element={<>Departures</>} />
+      </Route>
+    </Routes>
+  );
 };
