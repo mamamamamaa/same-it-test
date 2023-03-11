@@ -1,20 +1,11 @@
-import { FC, Suspense } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout";
 
 export const App: FC = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            Layout
-            <Suspense>
-              <Outlet />
-            </Suspense>
-          </>
-        }
-      >
+      <Route path="/" element={<Layout />}>
         <Route index element={<>Tracking</>} />
         <Route path="/departures" element={<>Departures</>} />
       </Route>
