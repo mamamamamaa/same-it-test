@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { FC, MouseEvent, useState } from "react";
 import {
   AppBar,
   Box,
@@ -12,15 +13,15 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { NavLink } from "react-router-dom";
+
+import style from "./NavLink.module.css";
 
 const pages = [
-  { pageName: "Home", linkTo: "/" },
   { pageName: "Tracking", linkTo: "/tracking" },
   { pageName: "Departures", linkTo: "/departures" },
 ];
 
-export const HeaderBar = () => {
+export const HeaderBar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) =>
@@ -30,29 +31,25 @@ export const HeaderBar = () => {
 
   return (
     <AppBar position="static" component="header" sx={{ background: "#da291c" }}>
-      <Container maxWidth="xl">
+      <Container>
         <Toolbar disableGutters>
           <LocalShippingIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            NovaPoshta
-          </Typography>
-
+          <NavLink to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+              }}
+            >
+              NovaPoshta
+            </Typography>
+          </NavLink>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -94,24 +91,23 @@ export const HeaderBar = () => {
           <LocalShippingIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            NovaPoshta
-          </Typography>
+          <NavLink to="/">
+            <Typography
+              variant="h5"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+              }}
+            >
+              NovaPoshta
+            </Typography>
+          </NavLink>
+
           <Box
             sx={{
               flexGrow: 1,
@@ -125,7 +121,12 @@ export const HeaderBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <NavLink to={page.linkTo}>{page.pageName}</NavLink>
+                <NavLink
+                  to={page.linkTo}
+                  className={({ isActive }) => (isActive ? style.active : "")}
+                >
+                  {page.pageName}
+                </NavLink>
               </Button>
             ))}
           </Box>
