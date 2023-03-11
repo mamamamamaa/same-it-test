@@ -1,11 +1,11 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch } from "../redux/hooks";
-import { getDepartures } from "../redux/departuresSlice/operations";
+import { getTrackingData } from "../redux/trackingSlice/operation";
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getDepartures({ city: "Одеса" }));
+    dispatch(getTrackingData("20450676703183"));
   }, []);
   return <h1>Hello world</h1>;
 };

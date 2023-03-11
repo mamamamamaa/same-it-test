@@ -4,7 +4,7 @@ import { getDepartures, ResponseDeparture } from "./operations";
 interface IInitialState {
   error: string | null;
   isLoading: boolean;
-  data: any[];
+  data: ResponseDeparture[] | [];
 }
 
 const initialState: IInitialState = {

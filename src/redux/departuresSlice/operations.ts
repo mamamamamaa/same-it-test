@@ -31,6 +31,11 @@ export const getDepartures = createAsyncThunk<
 
   try {
     const { data: res } = await axios.post(VITE_BASE_URL, fetchParams);
+
+    if (!res.status) {
+      return thunkAPI.rejectWithValue(res.errors[0]);
+    }
+
     return res.data;
   } catch (e) {
     if (e instanceof Error) {
