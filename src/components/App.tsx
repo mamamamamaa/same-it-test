@@ -1,11 +1,19 @@
-import { FC, useEffect } from "react";
-import { useAppDispatch } from "../redux/hooks";
-import { getTrackingData } from "../redux/trackingSlice/operation";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
+
+import { Layout } from "./Layout";
+import { lazyImport } from "../helpers/lazyImport";
+
+const TrackingPage = lazyImport("../pages/TrackingPage");
+const DeparturesPage = lazyImport("../pages/DeparturesPage");
 
 export const App: FC = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getTrackingData("20450676703183"));
-  }, []);
-  return <h1>Hello world</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<TrackingPage />} />
+        <Route path="/departures" element={<DeparturesPage />} />
+      </Route>
+    </Routes>
+  );
 };
