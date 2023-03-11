@@ -2,7 +2,7 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch } from "../redux/hooks";
-import { getTrackingData } from "../redux/trackingSlice/operation";
+import { getTrackingData } from "../redux/trackingSlice";
 
 export const Searchbar: FC = () => {
   const dispatch = useAppDispatch();

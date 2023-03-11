@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTrackingData, ResponseTracking } from "./operation";
+import { getTrackingData, ResponseTracking } from "./operations";
 
 interface IInitialState {
   error: string | null;
