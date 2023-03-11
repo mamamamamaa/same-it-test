@@ -1,5 +1,7 @@
 import { FC } from "react";
 
-export const DeparturesPage: FC = () => {
+const DeparturesPage: FC = () => {
   return <>Departures</>;
 };
+
+export default DeparturesPage;

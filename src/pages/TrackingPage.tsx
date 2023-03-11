@@ -1,5 +1,7 @@
 import { FC } from "react";
 
-export const TrackingPage: FC = () => {
+const TrackingPage: FC = () => {
   return <>Tracking</>;
 };
+
+export default TrackingPage;
