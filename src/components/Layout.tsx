@@ -1,16 +1,19 @@
 import { FC, Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { Container } from "@mui/material";
+import { HeaderBar } from "./Header/HeaderBar";
+import { Footer } from "./Footer";
 
 export const Layout: FC = () => {
   return (
-    <div>
-      <header>Header</header>
-      <main>
+    <>
+      <HeaderBar />
+      <Container component="main" sx={{ minHeight: "100vh" }}>
         <Suspense>
           <Outlet />
         </Suspense>
-      </main>
-      <footer>Footer</footer>
-    </div>
+      </Container>
+      <Footer />
+    </>
   );
 };

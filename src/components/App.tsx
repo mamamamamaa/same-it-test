@@ -6,12 +6,14 @@ import { lazyImport } from "../helpers/lazyImport";
 
 const TrackingPage = lazyImport("../pages/TrackingPage");
 const DeparturesPage = lazyImport("../pages/DeparturesPage");
+const HomePage = lazyImport("../pages/HomePage");
 
 export const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<TrackingPage />} />
+        <Route index element={<HomePage />} />
+        <Route path="/tracking" element={<TrackingPage />} />
         <Route path="/departures" element={<DeparturesPage />} />
       </Route>
     </Routes>
