@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import {
   Box,
   Button,
@@ -36,33 +36,35 @@ export const Saved: FC = () => {
             Saved TTN
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            {savedTracking.map(({ Number }) => (
-              <Fragment key={Number}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button
-                    onClick={() => handleGetTrackInfo(Number)}
-                    color="inherit"
+            <Box sx={{ maxHeight: "250px", overflowY: "scroll" }}>
+              {savedTracking.map(({ Number }) => (
+                <Fragment key={Number}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
                   >
-                    <Typography variant="body1" component="p">
-                      TTN {Number}
-                    </Typography>
-                  </Button>
-                  <IconButton
-                    onClick={() => handleDelete(Number)}
-                    aria-label="delete"
-                  >
-                    <DeleteIcon color={"error"} />
-                  </IconButton>
-                </Box>
-                <Divider />
-              </Fragment>
-            ))}
+                    <Button
+                      onClick={() => handleGetTrackInfo(Number)}
+                      color="inherit"
+                    >
+                      <Typography variant="body1" component="p">
+                        TTN {Number}
+                      </Typography>
+                    </Button>
+                    <IconButton
+                      onClick={() => handleDelete(Number)}
+                      aria-label="delete"
+                    >
+                      <DeleteIcon color={"error"} />
+                    </IconButton>
+                  </Box>
+                  <Divider />
+                </Fragment>
+              ))}
+            </Box>
             {savedTracking.length > 0 ? (
               <Box
                 sx={{

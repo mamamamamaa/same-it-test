@@ -2,18 +2,33 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getTrackingData, ResponseTracking } from "./operations";
 import { addToSaved } from "../../helpers/addToSaved";
 
+export interface Saved {
+  Number: string;
+}
 interface IInitialState {
   error: string | null;
   isLoading: boolean;
   data: ResponseTracking | null;
-  savedTracking: ResponseTracking[] | [];
+  savedTracking: Saved[] | [];
+  currentTrackNumber: string | "";
 }
 
 const initialState: IInitialState = {
-  savedTracking: [],
+  savedTracking: [
+    { Number: "20450676703181" },
+    { Number: "20450676702181" },
+    { Number: "20455676703181" },
+    { Number: "20450677703181" },
+    { Number: "23450676703181" },
+    { Number: "23450676703183" },
+    { Number: "23450676703112" },
+    { Number: "23450676703119" },
+    { Number: "23450674703112" },
+  ],
   data: null,
   error: null,
   isLoading: false,
+  currentTrackNumber: "",
 };
 
 const trackingSlice = createSlice({
@@ -41,6 +56,7 @@ const trackingSlice = createSlice({
         if (action.payload) {
           state.data = action.payload;
           state.savedTracking = addToSaved(state.savedTracking, action.payload);
+          state.currentTrackNumber = action.payload.Number;
         }
       })
       .addCase(getTrackingData.rejected, (state, action) => {

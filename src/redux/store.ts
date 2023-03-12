@@ -17,7 +17,8 @@ import { trackingReducer } from "./trackingSlice";
 const authPersistConfig = {
   key: "tracking",
   storage,
-  whitelist: ["savedTracking"],
+  whitelist: ["error"],
+  // whitelist: ["savedTracking"],
 };
 
 export const store = configureStore({

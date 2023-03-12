@@ -18,6 +18,9 @@ export const useTracking = () => {
   const error = useAppSelector((store) => store.tracking.error);
   const data = useAppSelector((store) => store.tracking.data);
   const savedTracking = useAppSelector((store) => store.tracking.savedTracking);
+  const currentTrackNumber = useAppSelector(
+    (store) => store.tracking.currentTrackNumber
+  );
 
-  return { isLoading, error, data, savedTracking };
+  return { isLoading, error, data, savedTracking, currentTrackNumber };
 };

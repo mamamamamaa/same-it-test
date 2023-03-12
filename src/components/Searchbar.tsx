@@ -1,21 +1,26 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useTracking } from "../redux/hooks";
 import { getTrackingData } from "../redux/trackingSlice";
 
 export const Searchbar: FC = () => {
   const dispatch = useAppDispatch();
-  const [searchText, setSearchText] = useState("");
+  const { currentTrackNumber } = useTracking();
+  const [search, setSearch] = useState<string>("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(event.target.value);
+    setSearch(event.target.value);
   };
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(getTrackingData(searchText));
+    dispatch(getTrackingData(search));
   };
+
+  useEffect(() => {
+    setSearch(currentTrackNumber);
+  }, [currentTrackNumber]);
 
   return (
     <Box>
@@ -32,17 +37,18 @@ export const Searchbar: FC = () => {
       >
         <TextField
           id="search-text"
+          name="search"
           label="TTN Number"
           variant="outlined"
           color="error"
+          value={search}
           inputProps={{
             pattern: "^[0-9]{14}$|^[0-9]{15}$",
             title: "Enter a valid TTN number",
             placeholder: "20400048799000",
           }}
-          fullWidth
-          value={searchText}
           onChange={handleInputChange}
+          fullWidth
         />
         <Button
           variant="contained"

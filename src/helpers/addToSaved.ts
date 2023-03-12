@@ -1,12 +1,13 @@
-import { ResponseTracking } from "../redux/trackingSlice";
+import { ResponseTracking, Saved } from "../redux/trackingSlice";
 
 export const addToSaved = (
-  saved: ResponseTracking[] | [],
-  numberToSave: ResponseTracking
-): ResponseTracking[] | [] => {
+  saved: Saved[] | [],
+  trackingToSave: ResponseTracking
+): Saved[] | [] => {
+  const isNotFind = trackingToSave.Status === "Номер не найден";
   const isAlreadySaved = saved.find(
-    ({ Number }) => Number === numberToSave.Number
+    ({ Number }) => Number === trackingToSave.Number
   );
 
-  return isAlreadySaved ? saved : [numberToSave, ...saved];
+  return isAlreadySaved || isNotFind ? saved : [trackingToSave, ...saved];
 };
