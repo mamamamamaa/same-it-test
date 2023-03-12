@@ -9,12 +9,14 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppDispatch, useTracking } from "../../redux/hooks";
+
 import {
   getTrackingData,
   removeAllSaved,
   removeFromSaved,
 } from "../../redux/trackingSlice";
+import { useAppDispatch, useTracking } from "../../redux/hooks";
+
 import style from "./ScrollBar.module.css";
 
 export const Saved: FC = () => {

@@ -42,7 +42,7 @@ const trackingSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrackingData.fulfilled, (state, action) => {
-        state.isLoading = true;
+        state.isLoading = false;
         if (action.payload) {
           state.data = action.payload;
           state.savedTracking = addToSaved(state.savedTracking, action.payload);

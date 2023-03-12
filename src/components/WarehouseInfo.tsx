@@ -1,9 +1,11 @@
 import { FC, Fragment } from "react";
 import { Card, CardContent, Divider, Typography } from "@mui/material";
+
 import { useWarehouses } from "../redux/hooks";
+
 import style from "./Saved/ScrollBar.module.css";
 
-export const WarehouseList: FC = () => {
+export const WarehouseInfo: FC = () => {
   const { data } = useWarehouses();
 
   return (

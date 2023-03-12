@@ -4,9 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 import { lazyImport } from "../helpers/lazyImport";
 
+const HomePage = lazyImport("../pages/HomePage");
 const TrackingPage = lazyImport("../pages/TrackingPage");
 const WarehousesPage = lazyImport("../pages/WarehousesPage");
-const HomePage = lazyImport("../pages/HomePage");
 
 export const App: FC = () => {
   return (
