@@ -1,23 +1,15 @@
 import axios from "axios";
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Properties, ResponseWarehouse } from "../../utils/interfaces";
 
 const { VITE_API_KEY, VITE_BASE_URL } = import.meta.env;
-
-interface Properties {
-  city: string;
-  search?: string;
-}
-
-export interface ResponseWarehouse {
-  Description: string;
-  Number: number;
-}
 
 export const getWarehouses = createAsyncThunk<
   ResponseWarehouse[],
   Properties,
   { rejectValue: string }
->("warehouses/getWarehouses", async ({ city, search = "" }, thunkAPI) => {
+>("warehouses/getWarehouses", async ({ city, query = "" }, thunkAPI) => {
   const fetchParams = {
     apiKey: VITE_API_KEY,
     modelName: "Address",
@@ -26,7 +18,7 @@ export const getWarehouses = createAsyncThunk<
       CityName: city,
       Page: 1,
       Limit: 100,
-      FindByString: search,
+      FindByString: query,
     },
   };
 

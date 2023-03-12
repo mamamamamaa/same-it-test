@@ -1,23 +1,34 @@
-import { FC, FormEvent } from "react";
-import { Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useAppDispatch } from "../redux/hooks";
-import { getWarehouses } from "../redux/warehousesSlice";
+import { Button, TextField, Typography } from "@mui/material";
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
+
+import { Request } from "../utils/interfaces";
+import { getWarehouses, setCurrentRequest } from "../redux/warehousesSlice";
+import { useAppDispatch, useWarehouses } from "../redux/hooks";
 
 export const WarehouseSearchbar: FC = () => {
   const dispatch = useAppDispatch();
+  const { currentRequest } = useWarehouses();
+  const [request, setRequest] = useState<Request>({ city: "", query: "" });
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-
-    const city = String(data.get("city"));
-    const search = String(data.get("search"));
-
-    if (city) {
-      dispatch(getWarehouses({ city, search }));
-    }
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setRequest((prevState) => ({ ...prevState, query: event.target.value }));
   };
+
+  const handleCityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setRequest((prevState) => ({ ...prevState, city: event.target.value }));
+  };
+
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(setCurrentRequest(request));
+    console.log(request);
+    dispatch(getWarehouses(request));
+  };
+
+  useEffect(() => {
+    setRequest(currentRequest);
+  }, [currentRequest]);
 
   return (
     <>
@@ -30,7 +41,7 @@ export const WarehouseSearchbar: FC = () => {
           paddingBottom: 50,
           gap: 10,
         }}
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
       >
         <TextField
           id="city-name"
@@ -38,6 +49,8 @@ export const WarehouseSearchbar: FC = () => {
           label="City"
           variant="outlined"
           color="error"
+          value={request.city}
+          onChange={handleCityChange}
           inputProps={{
             placeholder: "Одеса",
           }}
@@ -50,6 +63,8 @@ export const WarehouseSearchbar: FC = () => {
           label="Warehouse number"
           variant="outlined"
           color="error"
+          value={request.query}
+          onChange={handleSearchChange}
           inputProps={{
             placeholder: "Відділення №30",
           }}

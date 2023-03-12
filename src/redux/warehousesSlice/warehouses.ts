@@ -1,22 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getWarehouses, ResponseWarehouse } from "./operations";
 
-interface IInitialState {
-  error: string | null;
-  isLoading: boolean;
-  data: ResponseWarehouse[] | [];
-}
+import {
+  Request,
+  ResponseWarehouse,
+  WarehouseInitialState,
+} from "../../utils/interfaces";
+import { getWarehouses } from "./operations";
 
-const initialState: IInitialState = {
+const initialState: WarehouseInitialState = {
   data: [],
   error: null,
   isLoading: false,
+  currentRequest: {
+    city: "",
+    query: "",
+  },
 };
 
 const departuresSlice = createSlice({
   name: "warehouses",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentRequest(state, action: PayloadAction<Request>) {
+      state.currentRequest = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getWarehouses.pending, (state) => {
@@ -40,3 +48,4 @@ const departuresSlice = createSlice({
 });
 
 export const departuresReducer = departuresSlice.reducer;
+export const { setCurrentRequest } = departuresSlice.actions;

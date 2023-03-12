@@ -1,5 +1,3 @@
-import storage from "redux-persist/lib/storage";
-import { configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
@@ -10,9 +8,11 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { configureStore } from "@reduxjs/toolkit";
 
-import { departuresReducer } from "./warehousesSlice";
 import { trackingReducer } from "./trackingSlice";
+import { departuresReducer } from "./warehousesSlice";
 
 const authPersistConfig = {
   key: "tracking",

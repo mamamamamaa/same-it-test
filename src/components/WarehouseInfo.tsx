@@ -4,22 +4,25 @@ import { Card, CardContent, Divider, Typography } from "@mui/material";
 import { useWarehouses } from "../redux/hooks";
 
 import style from "./Saved/ScrollBar.module.css";
+import { PlaceholderText } from "./PlaceholderText";
 
 export const WarehouseInfo: FC = () => {
   const { data } = useWarehouses();
 
   return (
     <>
-      <Typography variant="h5" component="h2" gutterBottom textAlign="center">
-        <span
-          style={{
-            fontWeight: "bold",
-            textTransform: "uppercase",
-            color: "gray",
-          }}
-        >
-          Warehouses
-        </span>
+      <Typography
+        variant="h5"
+        component="h2"
+        gutterBottom
+        sx={{
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          color: "gray",
+          textAlign: "center",
+        }}
+      >
+        Warehouses
       </Typography>
       {data.length > 0 ? (
         <Card
@@ -42,13 +45,10 @@ export const WarehouseInfo: FC = () => {
           ))}
         </Card>
       ) : (
-        <Typography
-          variant="h5"
-          component="h2"
-          sx={{ color: "gray", textAlign: "center", p: 5 }}
-        >
-          No results were found for this query
-        </Typography>
+        <>
+          <Divider />
+          <PlaceholderText message={"No results were found for this query"} />
+        </>
       )}
     </>
   );

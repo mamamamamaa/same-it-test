@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { FC } from "react";
 import { useTracking } from "../redux/hooks";
+import { PlaceholderText } from "./PlaceholderText";
 
 export const TrackInfo: FC = () => {
   const { data } = useTracking();
@@ -23,10 +24,11 @@ export const TrackInfo: FC = () => {
             </Typography>
           </>
         ) : (
-          <Typography variant="h5" component="h2" color="gray">
-            To display information about the parcel, enter TTN in the field
-            above
-          </Typography>
+          <PlaceholderText
+            message={
+              "To display information about the parcel, enter TTN in the field above"
+            }
+          />
         )}
       </CardContent>
     </Card>
