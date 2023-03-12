@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Searchbar } from "../components/Searchbar";
+import { TTNSearchbar } from "../components/TTNSearchbar";
 import { TrackInfo } from "../components/TrackInfo";
 import { Grid } from "@mui/material";
 import { Saved } from "../components/Saved/Saved";
@@ -7,8 +7,8 @@ import { Saved } from "../components/Saved/Saved";
 const TrackingPage: FC = () => {
   return (
     <>
-      <Searchbar />
-      <Grid container spacing={3} sx={{ paddingBottom: "50px" }}>
+      <TTNSearchbar />
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TrackInfo />
         </Grid>

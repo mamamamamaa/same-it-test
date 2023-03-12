@@ -1,16 +1,20 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+
 import type { AppDispatch, RootState } from "./store";
 
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
-export const useDepartures = () => {
-  const isLoading = useAppSelector((store) => store.departures.isLoading);
-  const error = useAppSelector((store) => store.departures.error);
-  const data = useAppSelector((store) => store.departures.data);
+export const useWarehouses = () => {
+  const isLoading = useAppSelector((store) => store.warehouses.isLoading);
+  const error = useAppSelector((store) => store.warehouses.error);
+  const data = useAppSelector((store) => store.warehouses.data);
+  const currentRequest = useAppSelector(
+    (store) => store.warehouses.currentRequest
+  );
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, currentRequest };
 };
 
 export const useTracking = () => {

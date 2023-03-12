@@ -1,20 +1,15 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const { VITE_API_KEY, VITE_BASE_URL } = import.meta.env;
+import { ResponseTracking } from "../../utils/interfaces";
 
-export interface ResponseTracking {
-  Status: string;
-  WarehouseSender: string;
-  WarehouseRecipient: string;
-  Number: string;
-}
+const { VITE_API_KEY, VITE_BASE_URL } = import.meta.env;
 
 export const getTrackingData = createAsyncThunk<
   ResponseTracking | undefined,
   string,
   { rejectValue: string }
->("tracking/track", async (documentNumber = "", thunkAPI) => {
+>("tracking/getTrackInfo", async (documentNumber = "", thunkAPI) => {
   const fetchParams = {
     apiKey: VITE_API_KEY,
     modelName: "TrackingDocument",

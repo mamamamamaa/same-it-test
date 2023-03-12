@@ -1,19 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getTrackingData, ResponseTracking } from "./operations";
+
+import { getTrackingData } from "./operations";
 import { addToSaved } from "../../helpers/addToSaved";
+import { TrackingInitialState } from "../../utils/interfaces";
 
-export interface Saved {
-  Number: string;
-}
-interface IInitialState {
-  error: string | null;
-  isLoading: boolean;
-  data: ResponseTracking | null;
-  savedTracking: Saved[] | [];
-  currentTrackNumber: string | "";
-}
-
-const initialState: IInitialState = {
+const initialState: TrackingInitialState = {
   savedTracking: [],
   data: null,
   error: null,
@@ -42,7 +33,7 @@ const trackingSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTrackingData.fulfilled, (state, action) => {
-        state.isLoading = true;
+        state.isLoading = false;
         if (action.payload) {
           state.data = action.payload;
           state.savedTracking = addToSaved(state.savedTracking, action.payload);

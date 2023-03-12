@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch, useTracking } from "../redux/hooks";
 import { getTrackingData } from "../redux/trackingSlice";
 
-export const Searchbar: FC = () => {
+export const TTNSearchbar: FC = () => {
   const dispatch = useAppDispatch();
   const { currentTrackNumber } = useTracking();
   const [search, setSearch] = useState<string>("");
@@ -31,7 +31,7 @@ export const Searchbar: FC = () => {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          padding: 50,
+          paddingBottom: 50,
           gap: 10,
         }}
       >

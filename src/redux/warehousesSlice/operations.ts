@@ -1,22 +1,15 @@
 import axios from "axios";
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Properties, ResponseWarehouse } from "../../utils/interfaces";
 
 const { VITE_API_KEY, VITE_BASE_URL } = import.meta.env;
 
-interface Properties {
-  city: string;
-  search?: string;
-}
-
-export interface ResponseDeparture {
-  Description: string;
-}
-
-export const getDepartures = createAsyncThunk<
-  ResponseDeparture[],
+export const getWarehouses = createAsyncThunk<
+  ResponseWarehouse[],
   Properties,
   { rejectValue: string }
->("departures/getAll", async ({ city, search = "" }, thunkAPI) => {
+>("warehouses/getWarehouses", async ({ city, query = "" }, thunkAPI) => {
   const fetchParams = {
     apiKey: VITE_API_KEY,
     modelName: "Address",
@@ -25,14 +18,14 @@ export const getDepartures = createAsyncThunk<
       CityName: city,
       Page: 1,
       Limit: 100,
-      FindByString: search,
+      FindByString: query,
     },
   };
 
   try {
     const { data: res } = await axios.post(VITE_BASE_URL, fetchParams);
 
-    if (!res.status) {
+    if (!res.success) {
       return thunkAPI.rejectWithValue(res.errors[0]);
     }
 

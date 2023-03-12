@@ -4,9 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 import { lazyImport } from "../helpers/lazyImport";
 
-const TrackingPage = lazyImport("../pages/TrackingPage");
-const DeparturesPage = lazyImport("../pages/DeparturesPage");
 const HomePage = lazyImport("../pages/HomePage");
+const TrackingPage = lazyImport("../pages/TrackingPage");
+const WarehousesPage = lazyImport("../pages/WarehousesPage");
 
 export const App: FC = () => {
   return (
@@ -14,7 +14,7 @@ export const App: FC = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/tracking" element={<TrackingPage />} />
-        <Route path="/departures" element={<DeparturesPage />} />
+        <Route path="/warehouses" element={<WarehousesPage />} />
       </Route>
     </Routes>
   );
