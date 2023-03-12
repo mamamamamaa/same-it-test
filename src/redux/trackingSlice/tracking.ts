@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getTrackingData, ResponseTracking } from "./operations";
+import { addToSaved } from "../../helpers/addToSaved";
 
 interface IInitialState {
   error: string | null;
@@ -18,7 +19,17 @@ const initialState: IInitialState = {
 const trackingSlice = createSlice({
   name: "tracking",
   initialState,
-  reducers: {},
+  reducers: {
+    removeFromSaved(state, action: PayloadAction<string>) {
+      const TTN = action.payload;
+      state.savedTracking = state.savedTracking.filter(
+        ({ Number }) => Number !== TTN
+      );
+    },
+    removeAllSaved(state) {
+      state.savedTracking = [];
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getTrackingData.pending, (state) => {
@@ -29,7 +40,7 @@ const trackingSlice = createSlice({
         state.isLoading = true;
         if (action.payload) {
           state.data = action.payload;
-          state.savedTracking = [...state.savedTracking, action.payload];
+          state.savedTracking = addToSaved(state.savedTracking, action.payload);
         }
       })
       .addCase(getTrackingData.rejected, (state, action) => {
@@ -39,3 +50,4 @@ const trackingSlice = createSlice({
 });
 
 export const trackingReducer = trackingSlice.reducer;
+export const { removeFromSaved, removeAllSaved } = trackingSlice.actions;
