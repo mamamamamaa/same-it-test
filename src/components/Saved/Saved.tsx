@@ -9,26 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAppDispatch, useTracking } from "../redux/hooks";
+import { useAppDispatch, useTracking } from "../../redux/hooks";
 import {
   getTrackingData,
   removeAllSaved,
   removeFromSaved,
-} from "../redux/trackingSlice";
-import styled from "@emotion/styled";
-
-const BoxWithScroll = styled(Box)({
-  maxHeight: "250px",
-  overflowY: "auto",
-  "&::-webkit-scrollbar": {
-    backgroundColor: "transparent",
-    width: "4px",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#da291c",
-    borderRadius: "10px",
-  },
-});
+} from "../../redux/trackingSlice";
+import style from "./ScrollBar.module.css";
 
 export const Saved: FC = () => {
   const dispatch = useAppDispatch();
@@ -49,7 +36,7 @@ export const Saved: FC = () => {
             Saved TTN
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <BoxWithScroll>
+            <Box className={style.box}>
               {savedTracking.map(({ Number }) => (
                 <Fragment key={Number}>
                   <Box
@@ -77,7 +64,7 @@ export const Saved: FC = () => {
                   <Divider />
                 </Fragment>
               ))}
-            </BoxWithScroll>
+            </Box>
             {savedTracking.length > 0 ? (
               <Box
                 sx={{
