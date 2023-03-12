@@ -5,6 +5,7 @@ import { HeaderBar } from "./Header/HeaderBar";
 import { Footer } from "./Footer";
 
 export const Layout: FC = () => {
+  // TODO: add react-hot-toast
   return (
     <>
       <HeaderBar />

@@ -10,13 +10,14 @@ interface Properties {
 
 export interface ResponseDeparture {
   Description: string;
+  Phone: string;
 }
 
-export const getDepartures = createAsyncThunk<
+export const getWarehouses = createAsyncThunk<
   ResponseDeparture[],
   Properties,
   { rejectValue: string }
->("departures/getAll", async ({ city, search = "" }, thunkAPI) => {
+>("warehouses/getWarehouses", async ({ city, search = "" }, thunkAPI) => {
   const fetchParams = {
     apiKey: VITE_API_KEY,
     modelName: "Address",
@@ -31,8 +32,7 @@ export const getDepartures = createAsyncThunk<
 
   try {
     const { data: res } = await axios.post(VITE_BASE_URL, fetchParams);
-
-    if (!res.status) {
+    if (!res.success) {
       return thunkAPI.rejectWithValue(res.errors[0]);
     }
 

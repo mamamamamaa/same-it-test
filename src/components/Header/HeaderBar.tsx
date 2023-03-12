@@ -18,7 +18,7 @@ import style from "./NavLink.module.css";
 
 const pages = [
   { pageName: "Tracking", linkTo: "/tracking" },
-  { pageName: "Departures", linkTo: "/departures" },
+  { pageName: "Warehouses", linkTo: "/warehouses" },
 ];
 
 export const HeaderBar: FC = () => {

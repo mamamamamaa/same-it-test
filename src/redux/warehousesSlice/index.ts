@@ -1,2 +1,2 @@
-export * from "./departures";
+export * from "./warehouses";
 export * from "./operations";

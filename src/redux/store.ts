@@ -11,7 +11,7 @@ import {
   REHYDRATE,
 } from "redux-persist";
 
-import { departuresReducer } from "./departuresSlice";
+import { departuresReducer } from "./warehousesSlice";
 import { trackingReducer } from "./trackingSlice";
 
 const authPersistConfig = {
@@ -24,7 +24,7 @@ export const store = configureStore({
   reducer: {
     // @ts-ignore
     tracking: persistReducer(authPersistConfig, trackingReducer),
-    departures: departuresReducer,
+    warehouses: departuresReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

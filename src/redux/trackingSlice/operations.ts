@@ -14,7 +14,7 @@ export const getTrackingData = createAsyncThunk<
   ResponseTracking | undefined,
   string,
   { rejectValue: string }
->("tracking/track", async (documentNumber = "", thunkAPI) => {
+>("tracking/getTrackInfo", async (documentNumber = "", thunkAPI) => {
   const fetchParams = {
     apiKey: VITE_API_KEY,
     modelName: "TrackingDocument",
