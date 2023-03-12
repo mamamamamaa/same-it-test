@@ -14,17 +14,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-  savedTracking: [
-    { Number: "20450676703181" },
-    { Number: "20450676702181" },
-    { Number: "20455676703181" },
-    { Number: "20450677703181" },
-    { Number: "23450676703181" },
-    { Number: "23450676703183" },
-    { Number: "23450676703112" },
-    { Number: "23450676703119" },
-    { Number: "23450674703112" },
-  ],
+  savedTracking: [],
   data: null,
   error: null,
   isLoading: false,

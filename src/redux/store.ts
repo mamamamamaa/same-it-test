@@ -1,14 +1,14 @@
 import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from "redux-persist";
 
 import { departuresReducer } from "./departuresSlice";
@@ -17,8 +17,7 @@ import { trackingReducer } from "./trackingSlice";
 const authPersistConfig = {
   key: "tracking",
   storage,
-  whitelist: ["error"],
-  // whitelist: ["savedTracking"],
+  whitelist: ["savedTracking"],
 };
 
 export const store = configureStore({

@@ -1,11 +1,10 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment } from "react";
 import {
   Box,
   Button,
   Card,
   CardContent,
   Divider,
-  Grid,
   IconButton,
   Typography,
 } from "@mui/material";
@@ -16,6 +15,20 @@ import {
   removeAllSaved,
   removeFromSaved,
 } from "../redux/trackingSlice";
+import styled from "@emotion/styled";
+
+const BoxWithScroll = styled(Box)({
+  maxHeight: "250px",
+  overflowY: "auto",
+  "&::-webkit-scrollbar": {
+    backgroundColor: "transparent",
+    width: "4px",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "#da291c",
+    borderRadius: "10px",
+  },
+});
 
 export const Saved: FC = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +49,7 @@ export const Saved: FC = () => {
             Saved TTN
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Box sx={{ maxHeight: "250px", overflowY: "scroll" }}>
+            <BoxWithScroll>
               {savedTracking.map(({ Number }) => (
                 <Fragment key={Number}>
                   <Box
@@ -64,7 +77,7 @@ export const Saved: FC = () => {
                   <Divider />
                 </Fragment>
               ))}
-            </Box>
+            </BoxWithScroll>
             {savedTracking.length > 0 ? (
               <Box
                 sx={{

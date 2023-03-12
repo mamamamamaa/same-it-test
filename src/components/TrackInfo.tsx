@@ -11,13 +11,15 @@ export const TrackInfo: FC = () => {
         {data ? (
           <>
             <Typography variant="h5" component="h2" gutterBottom>
-              Status: {data.Status}
+              <span style={{ fontWeight: "bold" }}>Status</span>: {data.Status}
             </Typography>
             <Typography variant="body1" component="p" gutterBottom>
-              Warehouse sender: {data.WarehouseSender}
+              <span style={{ fontWeight: "bold" }}>Warehouse sender</span>:{" "}
+              {data.WarehouseSender}
             </Typography>
             <Typography variant="body1" component="p">
-              Warehouse recipient: {data.WarehouseRecipient}
+              <span style={{ fontWeight: "bold" }}>Warehouse recipient</span>:{" "}
+              {data.WarehouseRecipient}
             </Typography>
           </>
         ) : (
