@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getWarehouses, ResponseDeparture } from "./operations";
+import { getWarehouses, ResponseWarehouse } from "./operations";
 
 interface IInitialState {
   error: string | null;
   isLoading: boolean;
-  data: ResponseDeparture[] | [];
+  data: ResponseWarehouse[] | [];
 }
 
 const initialState: IInitialState = {
@@ -25,11 +25,11 @@ const departuresSlice = createSlice({
       })
       .addCase(
         getWarehouses.fulfilled,
-        (state, action: PayloadAction<ResponseDeparture[]>) => {
+        (state, action: PayloadAction<ResponseWarehouse[]>) => {
           state.isLoading = false;
-          state.data = action.payload.map(({ Description, Phone }) => ({
+          state.data = action.payload.map(({ Description, Number }) => ({
             Description,
-            Phone,
+            Number,
           }));
         }
       )

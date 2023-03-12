@@ -31,7 +31,7 @@ export const Searchbar: FC = () => {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          padding: 50,
+          paddingBottom: 50,
           gap: 10,
         }}
       >

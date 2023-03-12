@@ -8,13 +8,13 @@ interface Properties {
   search?: string;
 }
 
-export interface ResponseDeparture {
+export interface ResponseWarehouse {
   Description: string;
-  Phone: string;
+  Number: number;
 }
 
 export const getWarehouses = createAsyncThunk<
-  ResponseDeparture[],
+  ResponseWarehouse[],
   Properties,
   { rejectValue: string }
 >("warehouses/getWarehouses", async ({ city, search = "" }, thunkAPI) => {
@@ -32,6 +32,7 @@ export const getWarehouses = createAsyncThunk<
 
   try {
     const { data: res } = await axios.post(VITE_BASE_URL, fetchParams);
+
     if (!res.success) {
       return thunkAPI.rejectWithValue(res.errors[0]);
     }

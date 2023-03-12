@@ -23,7 +23,7 @@ export const TrackInfo: FC = () => {
             </Typography>
           </>
         ) : (
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" color="gray">
             To display information about the parcel, enter TTN in the field
             above
           </Typography>

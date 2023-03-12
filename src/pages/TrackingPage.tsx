@@ -8,7 +8,7 @@ const TrackingPage: FC = () => {
   return (
     <>
       <Searchbar />
-      <Grid container spacing={3} sx={{ paddingBottom: "50px" }}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TrackInfo />
         </Grid>

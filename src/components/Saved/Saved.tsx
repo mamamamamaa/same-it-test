@@ -36,7 +36,7 @@ export const Saved: FC = () => {
             Saved TTN
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Box className={style.box}>
+            <Box sx={{ maxHeight: "250px" }} className={style.box}>
               {savedTracking.map(({ Number }) => (
                 <Fragment key={Number}>
                   <Box

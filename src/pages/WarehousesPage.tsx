@@ -3,6 +3,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch } from "../redux/hooks";
 import { getWarehouses } from "../redux/warehousesSlice";
+import { WarehouseList } from "../components/WarehouseList";
 
 const WarehousesPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,58 +20,61 @@ const WarehousesPage: FC = () => {
   };
 
   return (
-    <form
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 50,
-        gap: 10,
-      }}
-      onSubmit={handleSubmit}
-    >
-      <TextField
-        id="city-name"
-        name="city"
-        label="City"
-        variant="outlined"
-        color="error"
-        inputProps={{
-          placeholder: "Odesa",
-        }}
-        fullWidth
-        required
-      />
-      <TextField
-        id="search-text"
-        name="search"
-        label="Warehouse number"
-        variant="outlined"
-        color="error"
-        inputProps={{
-          placeholder: "Відділення №10",
-        }}
-        fullWidth
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        sx={{
+    <>
+      <form
+        style={{
           display: "flex",
-          gap: 1,
-          backgroundColor: "#da291c",
-          "&:hover": {
-            backgroundColor: "white",
-            color: "#da291c",
-          },
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: 50,
+          gap: 10,
         }}
+        onSubmit={handleSubmit}
       >
-        <Typography variant="body2">Get status TTN</Typography>
-        <SearchIcon />
-      </Button>
-    </form>
+        <TextField
+          id="city-name"
+          name="city"
+          label="City"
+          variant="outlined"
+          color="error"
+          inputProps={{
+            placeholder: "Одеса",
+          }}
+          fullWidth
+          required
+        />
+        <TextField
+          id="search-text"
+          name="search"
+          label="Warehouse number"
+          variant="outlined"
+          color="error"
+          inputProps={{
+            placeholder: "Відділення №30",
+          }}
+          fullWidth
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          sx={{
+            display: "flex",
+            gap: 1,
+            backgroundColor: "#da291c",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#da291c",
+            },
+          }}
+        >
+          <Typography variant="body2">Get warehouses info</Typography>
+          <SearchIcon />
+        </Button>
+      </form>
+      <WarehouseList />
+    </>
   );
 };
 

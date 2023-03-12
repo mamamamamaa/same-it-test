@@ -9,7 +9,10 @@ export const Layout: FC = () => {
   return (
     <>
       <HeaderBar />
-      <Container component="main" sx={{ minHeight: "100vh" }}>
+      <Container
+        component="main"
+        sx={{ minHeight: "100vh", py: "50px", px: "50px" }}
+      >
         <Suspense>
           <Outlet />
         </Suspense>
