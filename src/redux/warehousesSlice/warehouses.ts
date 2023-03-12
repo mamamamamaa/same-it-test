@@ -17,7 +17,7 @@ const initialState: WarehouseInitialState = {
   },
 };
 
-const departuresSlice = createSlice({
+const warehousesSlice = createSlice({
   name: "warehouses",
   initialState,
   reducers: {
@@ -47,5 +47,5 @@ const departuresSlice = createSlice({
       }),
 });
 
-export const departuresReducer = departuresSlice.reducer;
-export const { setCurrentRequest } = departuresSlice.actions;
+export const warehousesReducer = warehousesSlice.reducer;
+export const { setCurrentRequest } = warehousesSlice.actions;

@@ -12,7 +12,7 @@ import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { trackingReducer } from "./trackingSlice";
-import { departuresReducer } from "./warehousesSlice";
+import { warehousesReducer } from "./warehousesSlice";
 
 const authPersistConfig = {
   key: "tracking",
@@ -24,7 +24,7 @@ export const store = configureStore({
   reducer: {
     // @ts-ignore
     tracking: persistReducer(authPersistConfig, trackingReducer),
-    warehouses: departuresReducer,
+    warehouses: warehousesReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

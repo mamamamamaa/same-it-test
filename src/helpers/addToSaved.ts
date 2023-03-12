@@ -1,4 +1,4 @@
-import { ResponseTracking, Saved } from "../redux/trackingSlice";
+import { ResponseTracking, Saved } from "../utils/interfaces";
 
 export const addToSaved = (
   saved: Saved[] | [],
