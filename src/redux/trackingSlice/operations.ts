@@ -7,6 +7,7 @@ export interface ResponseTracking {
   Status: string;
   WarehouseSender: string;
   WarehouseRecipient: string;
+  Number: string;
 }
 
 export const getTrackingData = createAsyncThunk<
@@ -34,12 +35,8 @@ export const getTrackingData = createAsyncThunk<
       return thunkAPI.rejectWithValue(res.errors[0]);
     }
 
-    console.log({
-      Status: res.data[0].Status,
-      WarehouseSender: res.data[0].WarehouseSender,
-      WarehouseRecipient: res.data[0].WarehouseRecipient,
-    });
     return {
+      Number: res.data[0].Number,
       Status: res.data[0].Status,
       WarehouseSender: res.data[0].WarehouseSender,
       WarehouseRecipient: res.data[0].WarehouseRecipient,

@@ -1,5 +1,5 @@
-import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
-import type { RootState, AppDispatch } from "./store";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "./store";
 
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -17,6 +17,10 @@ export const useTracking = () => {
   const isLoading = useAppSelector((store) => store.tracking.isLoading);
   const error = useAppSelector((store) => store.tracking.error);
   const data = useAppSelector((store) => store.tracking.data);
+  const savedTracking = useAppSelector((store) => store.tracking.savedTracking);
+  const currentTrackNumber = useAppSelector(
+    (store) => store.tracking.currentTrackNumber
+  );
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, savedTracking, currentTrackNumber };
 };
