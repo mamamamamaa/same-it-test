@@ -12,7 +12,7 @@ import theme from "./theme";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <HashRouter basename="/">
+  <HashRouter basename="/pages">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
