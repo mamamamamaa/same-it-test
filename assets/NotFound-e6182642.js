@@ -1,0 +1,1 @@
+import{a as o,B as t,T as a}from"./index-2614a473.js";const r=()=>o(t,{children:o(a,{variant:"h2",sx:{textAlign:"center",color:"gray",fontWeight:"bold",py:20},children:"Nothing found along this path"})});export{r as default};
