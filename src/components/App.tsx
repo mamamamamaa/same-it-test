@@ -2,11 +2,14 @@ import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Layout } from "./Layout";
-import { lazyImport } from "../helpers/lazyImport";
 
-const HomePage = lazyImport("../pages/HomePage");
-const TrackingPage = lazyImport("../pages/TrackingPage");
-const WarehousesPage = lazyImport("../pages/WarehousesPage");
+import HomePage from "../pages/HomePage";
+import TrackingPage from "../pages/TrackingPage";
+import WarehousesPage from "../pages/WarehousesPage";
+//
+// const HomePage = lazyImport("../pages/HomePage");
+// const TrackingPage = lazyImport("../pages/TrackingPage");
+// const WarehousesPage = lazyImport("../pages/WarehousesPage");
 
 export const App: FC = () => {
   return (
