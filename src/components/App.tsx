@@ -3,10 +3,6 @@ import { Route, Routes } from "react-router-dom";
 
 import { Layout } from "./Layout";
 
-// const HomePage = lazyImport("../pages/HomePage");
-// const TrackingPage = lazyImport("../pages/TrackingPage");
-// const WarehousesPage = lazyImport("../pages/WarehousesPage");
-
 const HomePage = lazy(() => import("../pages/HomePage"));
 const TrackingPage = lazy(() => import("../pages/TrackingPage"));
 const WarehousesPage = lazy(() => import("../pages/WarehousesPage"));

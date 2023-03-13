@@ -12,7 +12,7 @@ import theme from "./theme";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter basename="/same-it-test">
+  <BrowserRouter basename="/same-it-test/">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
