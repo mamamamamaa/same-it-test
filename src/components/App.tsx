@@ -11,7 +11,6 @@ const WarehousesPage = lazyImport("../pages/WarehousesPage");
 export const App: FC = () => {
   return (
     <>
-      <h1>Hello</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

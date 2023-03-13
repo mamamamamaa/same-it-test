@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -12,7 +12,7 @@ import theme from "./theme";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
@@ -21,5 +21,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         </ThemeProvider>
       </PersistGate>
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );
