@@ -10,12 +10,15 @@ const WarehousesPage = lazyImport("../pages/WarehousesPage");
 
 export const App: FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/tracking" element={<TrackingPage />} />
-        <Route path="/warehouses" element={<WarehousesPage />} />
-      </Route>
-    </Routes>
+    <>
+      <h1>Hello</h1>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/tracking" element={<TrackingPage />} />
+          <Route path="/warehouses" element={<WarehousesPage />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
