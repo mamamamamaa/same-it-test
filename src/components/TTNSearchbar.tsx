@@ -49,6 +49,7 @@ export const TTNSearchbar: FC = () => {
           }}
           onChange={handleInputChange}
           fullWidth
+          required
         />
         <Button
           variant="contained"

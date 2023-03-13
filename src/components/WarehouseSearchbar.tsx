@@ -22,7 +22,6 @@ export const WarehouseSearchbar: FC = () => {
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(setCurrentRequest(request));
-    console.log(request);
     dispatch(getWarehouses(request));
   };
 
