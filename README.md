@@ -4,7 +4,7 @@ Test task in the SAME IT company Same for the position of JUNIOR JAVASCRIPT DEVE
 
 ## Usage
 
-The application is written using technologies such as: Vite, react.js, typescript, redux-toolkit, redux-persist, axios and novaposhta API. You can test the application by clicking on this link or in the About section. But if you want to test locally, then you can follow the instructions below:
+The application is written using technologies such as: Vite, React.js, TypeScript, Material UI, Redux-toolkit, Redux-persist, Axios and NovaPoshta API. You can test the application by clicking on this [link](https://mamamamamaa.github.io/same-it-test/) or in the About section. But if you want to test locally, then you can follow the instructions below:
 
 Register on the [novaposhta for developers](https://developers.novaposhta.ua/) service, get your API key and in the same place you can get a link to the BASE URL.
 
